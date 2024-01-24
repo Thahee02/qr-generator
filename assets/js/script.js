@@ -4,12 +4,13 @@ let qrEl = document.getElementById('qrCode')
 let outputEl = document.querySelector('#output')
 const downloadBtnEl = document.querySelector('#downloadBtn')
 
-let qrcode = new QRCode(qrEl)
+let qrcode = new QRCode(qrEl,{
+	width: 118,
+    height: 118,
+})
 
 btnEl.addEventListener('click', ()=> {
 	generateQR()
-	let imgEl = document.querySelector('img')
-	console.log(imgEl.src);
 })
 
 
@@ -19,6 +20,13 @@ url.addEventListener('keydown', (e)=>{
 	}
 })
 
+downloadBtnEl.addEventListener('click', ()=>{
+	let img = document.querySelector('#qrCode > img');
+	let src = img.getAttribute('src')
+	if(src != null){
+		downloadBtnEl.setAttribute('href', src)
+	}
+})
 
 
 function generateQR(){

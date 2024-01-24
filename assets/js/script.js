@@ -31,6 +31,7 @@ downloadBtnEl.addEventListener('click', ()=>{
 
 function generateQR(){
 	if(url.value != ""){
+		outputEl.classList.remove('hidden');
         qrcode.makeCode(url.value);
 		
     }
